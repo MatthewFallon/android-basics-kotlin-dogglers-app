@@ -38,6 +38,7 @@ import com.example.dogglers.data.DataSource
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers
 import java.lang.IllegalStateException
 
 open class BaseTest {
@@ -55,9 +56,9 @@ open class BaseTest {
     private fun hasListItemContent(name: String, age: String, hobbies: String, imageResource: Int) {
         onView(withText(name))
             .check(matches(isDisplayed()))
-        onView(withText(age))
+        onView(withText(Matchers.containsString(age)))
             .check(matches(isDisplayed()))
-        onView(withText(hobbies))
+        onView(withText(Matchers.containsString(hobbies)))
             .check(matches(isDisplayed()))
         onView(withDrawable(imageResource))
             .check(matches(isDisplayed()))
